@@ -1,9 +1,13 @@
+var fs = require ('fs');
 var express = require('express');
 var app = express();
-app.use(express.logger());
+
+app.use(express.static(__dirname + '/assets'));
+
 
 app.get('/', function(request, response) {
-  response.send('index.html');
+  var data = fs.readFileSyn('index.html');
+  response.send(data.toString());
 });
 
 var port = process.env.PORT || 5000;
