@@ -6,9 +6,10 @@ app.use(express.static(__dirname + '/assets'));
 
 
 app.get('/', function(request, response) {
-  var data = fs.readFileSyn('index.html');
+  var data = fs.readFileSync('index.html');
   response.send(data.toString());
 });
+
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
